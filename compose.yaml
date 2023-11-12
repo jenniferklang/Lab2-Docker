@@ -11,7 +11,7 @@ services:
   frontend:
     image: nginx:latest
     volumes:
-      - ./frontend/dist:/usr/share/nginx/html
+      - ./frontend:/usr/share/nginx/html
     ports:
       - "8080:80"
     depends_on:
