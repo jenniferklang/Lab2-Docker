@@ -18,6 +18,7 @@ app.use(cors());
 
 app.get("/api", async (_request, response) => {
   try {
+    console.log("Inkommande GET-anrop till /api");
     const query = `
       SELECT cities.id AS city_id, cities.name AS city_name, food_wholesalers.name AS grossist_name, food_wholesalers.product, food_wholesalers.price
       FROM cities
@@ -57,13 +58,16 @@ app.delete(
     const cityId = request.params.city_id;
     const grossistName = request.params.grossist_name;
     const query = `
-    DELETE FROM food_wholesalers
-    WHERE city_id = $1 AND name = $2;
-  `;
+      DELETE FROM food_wholesalers
+      WHERE city_id = $1 AND name = $2;
+    `;
 
     client
       .query(query, [cityId, grossistName])
       .then(() => {
+        console.log(
+          `Grossist ${grossistName} borttagen från stad med ID ${cityId}`
+        );
         response.send("Grossist deleted successfully.");
       })
       .catch((error) => {
@@ -94,6 +98,7 @@ app.post("/api/city/:city_id/grossist", (request, response) => {
   client
     .query(query, [cityId])
     .then(({ rows }) => {
+      console.log(`Grossist tillagd i stad med ID ${cityId}`);
       response.status(201).json(rows[0]);
     })
     .catch((error) => {
