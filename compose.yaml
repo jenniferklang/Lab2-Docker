@@ -8,14 +8,13 @@ services:
     ports:
       - "3000:3000"
 
-  frontend:
-    image: nginx:latest
-    volumes:
-      - ./frontend:/usr/share/nginx/html
-    ports:
-      - "8080:80"
+frontend:
+    build:
+      context: frontend
     depends_on:
       - backend
+    ports:
+      - "80:80"
 
   database:
     env_file:

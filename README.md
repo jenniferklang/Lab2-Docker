@@ -2,8 +2,7 @@
 
 # En mini fullstack-applikation med användning av en IaaS-lösning som Microsoft Azure och Docker Compose.
 
-[http://172.201.2.225:3000]
-[http://172.201.2.225:80]
+[http://172.201.2.225]
 
 [https://github.com/jenniferklang/Lab2-Docker]
 

@@ -1,10 +1,10 @@
-CREATE TABLE cities (
+CREATE TABLE IF NOT EXISTS cities (
   id serial PRIMARY KEY,
   name text UNIQUE NOT NULL,
   population INTEGER NOT NULL
 );
 
-CREATE TABLE food_wholesalers (
+CREATE TABLE IF NOT EXISTS food_wholesalers (
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
   product TEXT NOT NULL,
